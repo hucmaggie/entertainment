@@ -1,0 +1,13 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+
+rule "Rule1"
+	dialect "mvel"
+	enabled false
+	when
+		CommunicationChannel( type == "CC" )
+		request : SalesRequest( )
+	then
+		request.addError( "testesds", "testedsd", "testedsds" );
+end

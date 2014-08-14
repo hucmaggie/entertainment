@@ -1,0 +1,14 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+
+rule "businessRule3"
+	dialect "mvel"
+	when
+		CommunicationChannel( type == "CC" || type == "INTER" )
+		Component( name == "WDWOR" )
+		Component( name == "TPT" )
+		Booking( bkDate : bookingdate)
+		salesRequest : SalesRequest( )
+	then
+end

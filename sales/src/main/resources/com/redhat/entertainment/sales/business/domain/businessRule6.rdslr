@@ -1,0 +1,23 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+
+rule "businessRule6"
+	dialect "mvel"
+	when
+		>CommunicationChannel( type == "INTER" )
+		>Accommodation( name == "California Area Hotel" )
+		>ThemeParkTicket( destination == "California" )
+		>exists (Golf( )) 
+		>Booking( bodate : bookingdate != null )
+		bookingdate is in at least 30 in advance
+	then
+		>Discount fact0 = new Discount();
+		>fact0.setPercentage( 20 );
+		>fact0.setType( "accommodation" );
+		>insertLogical( fact0 );
+		>Discount fact1 = new Discount();
+		>fact1.setPercentage( 60 );
+		>fact1.setType( "golf" );
+		>insertLogical( fact1 );
+end

@@ -1,0 +1,11 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+
+rule "businessRule10"
+	dialect "mvel"
+	when
+		entPackage : EntertainmentPackage( type == "platinum" )
+	then
+		entPackage.addPlatinumPackage(  );
+end

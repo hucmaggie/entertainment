@@ -1,0 +1,13 @@
+package com.redhat.entertainment.sales.business.domain;
+
+query "get discounts"
+
+      discount : Discount( )
+
+end
+
+query "getRequest"
+
+     request : SalesRequest()
+
+end 

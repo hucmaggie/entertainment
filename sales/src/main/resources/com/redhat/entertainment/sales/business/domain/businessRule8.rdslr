@@ -1,0 +1,10 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+
+rule "businessRule8"
+	dialect "mvel"
+	when
+		>ThemeParkTicket( destination == "Florida" , numberOfDays >= 1 && numberOfDays <= 10 )
+	then
+end

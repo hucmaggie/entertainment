@@ -1,0 +1,13 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+
+rule "businessRule7"
+	dialect "mvel"
+	when
+		>DistributionChannel( type == "WDTC" )
+		>not (Insurance( )) 
+		>request : SalesRequest( )
+	then
+		>request.addError( "Insurance", "businessError", "must have insurance" );
+end

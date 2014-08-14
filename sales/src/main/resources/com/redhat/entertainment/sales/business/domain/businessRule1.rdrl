@@ -1,0 +1,15 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+
+rule "businessRule1"
+	dialect "mvel"
+	when
+		Accommodation( name == "WDW Onsite Resort" , lengthOfStay == 7 )
+		dayof6th : Rate( day == 6 )
+		dayof7th : Rate( day == 7 )
+	then
+		dayof6th.setRate( 1.0B );
+		System.out.println("rule fired1");
+		dayof7th.setRate( 3.0B );
+end

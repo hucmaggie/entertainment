@@ -1,0 +1,16 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+import com.disney.business.domain.util.Helper;
+
+rule "BusinessRule4-dsl"
+	dialect "mvel"
+	when
+		>DistributionChannel( name == "Cast Member" )
+		>Accommodation( name == "WDW Onsite Resort" , type == "Disney1" )
+		>Component( name == "TPT" )
+		>Booking( bodate : bookingdate)
+		is bookingdate on 8
+		bookingdate is in at least 30 in advance
+	then
+end

@@ -1,0 +1,13 @@
+package com.redhat.entertainment.sales.business.domain;
+
+import java.lang.Number;
+import com.disney.business.domain.util.Helper;
+import java.math.BigDecimal;
+
+rule "businessRule5"
+	dialect "mvel"
+	when
+		Booking( totalBookingAmount >= 5000.0B )
+		request : SalesRequest( )
+	then
+end
